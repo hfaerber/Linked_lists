@@ -127,14 +127,14 @@ describe('LinkedList', function() {
 
   describe('.delete', function(){
     context('with one node', function(){
-      it.skip('deletes a solo node', function(){
+      it('deletes a solo node', function(){
         list.push('hello');
         list.delete('hello');
         expect(list._length).to.eq(0);
         expect(list.head).to.eq(null);
       });
 
-      it.skip('does not perform a delete when a node does not match', function(){
+      it('does not perform a delete when a node does not match', function(){
         list.push('hello');
         list.delete('goodbye');
         expect(list._length).to.eq(1);
@@ -151,7 +151,7 @@ describe('LinkedList', function() {
         list.push('friend');
       });
 
-      it.skip('changes the list _.length', function(){
+      it('changes the list _.length', function(){
         expect(list.head.nextNode.data).to.eq('darkness');
         expect(list._length).to.eq(5);
         list.delete('friend');
@@ -162,13 +162,13 @@ describe('LinkedList', function() {
         expect(list._length).to.eq(3);
       });
 
-      it.skip('resets the nextNode property on the node before the deleted node', function(){
+      it('resets the nextNode property on the node before the deleted node', function(){
         expect(list.head.nextNode.data).to.eq('darkness');
         list.delete('darkness');
         expect(list.head.nextNode.data).to.eq('my');
       });
 
-      it.skip('resets the list.head if deleting the first node', function(){
+      it('resets the list.head if deleting the first node', function(){
         expect(list.head.data).to.eq('hello');
         list.delete('hello');
         expect(list.head.data).to.eq('darkness');

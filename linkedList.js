@@ -45,6 +45,34 @@ class List {
     return lastElement
   }
 
+  delete(nodeData) {
+    var match = this.find(nodeData);
+
+    if (match) {
+      this._length --;
+      let nodeInQuestion = this.head;
+      let prevNode = null;
+      let nextUp = nodeInQuestion.nextNode;
+      for (let i = 0; i < this._length +1; i++) {
+        if (nodeInQuestion === match) {
+          if (prevNode === null && nextUp === null) {
+            this.head = null;
+          } else if (prevNode === null && nextUp) {
+            console.log('nextUp', nextUp)
+            this.head = nextUp;
+          } else {
+            prevNode.nextNode = nextUp;
+          }
+        } else {
+          prevNode = nodeInQuestion;
+          nodeInQuestion = nodeInQuestion.nextNode;
+          // now nodeInQuestion has been bumped one so nextUp looks same
+          nextUp = nodeInQuestion.nextNode;
+        }
+      }
+  }
+}
+
   lastNode() {
     if (this.head === null) {
       return null
@@ -67,7 +95,6 @@ class List {
 
   find(nodeData) {
     let found = this.findNode(this.head, nodeData);
-    console.log('found', found)
     return found ? found : null;
   }
 
